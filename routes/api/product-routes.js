@@ -23,7 +23,9 @@ router.get('/:id', async (req, res) => {
   // find a single product by its `id`
   try {
     // be sure to include its associated Category and Tag data
-    const productByID = await Product.findByPk(req.params.id, {include: [{model: Category}, {model: Tag}]})
+    const productByID = await Product.findByPk(req.params.id, {
+      include: [{model: Category}, {model: Tag}]
+    })
 
     if(!productByID){
       res.status(404).json("There is no product with that ID")
